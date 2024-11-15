@@ -3,10 +3,10 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 
-    import { Home } from 'lucide-svelte';
-    import { NotePen } from 'lucide-svelte';
-    import { Ruler } from 'lucide-svelte';
-    import { Settings } from 'lucide-svelte';
+    import { Home } from 'lucide-svelte/icons/house';
+    import { NotePen } from 'lucide-svelte/icons/notebook-pen';
+    import { Ruler } from 'lucide-svelte/icons/ruler';
+    import { Settings } from 'lucide-svelte/icons/settings';
 
     let currentTitle: number = 0;
 </script>
