@@ -75,8 +75,8 @@
 		</AppBar>
         <AppRail>
             <svelte:fragment slot="lead">
-                <AppRailAnchor href="/" style="color: white;">
-                    <div class="icon-container text-secondary">
+                <AppRailAnchor href="/" >
+                    <div class="icon-container">
                         <img src={Home} alt="Home" />
                     </div>
                 </AppRailAnchor>
