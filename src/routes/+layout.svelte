@@ -2,22 +2,12 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
-    import { popup } from '@skeletonlabs/skeleton';
-    import { PopupSettings } from '@skeletonlabs/skeleton';
 
     import Home from '$lib/icons/home.svg';
     import Progress from '$lib/icons/progress.svg';
     import Scale from '$lib/icons/scale.svg';
     import Settings from '$lib/icons/settings.svg';
 
-    let currentTitle: number = 0;
-
-    const popupHover: PopupSettings = {
-    	event: 'hover',
-    	target: 'popupHover',
-    	placement: 'right'
-    };
-				
 </script>
 
 <style>
@@ -85,44 +75,28 @@
 		</AppBar>
         <AppRail>
             <svelte:fragment slot="lead">
-                <AppRailAnchor href="/" class="[&>*]:pointer-events-none">
-                    <div class="icon-container" use:popup={popupHover}>
+                <AppRailAnchor href="/" style="color: white;">
+                    <div class="icon-container text-secondary">
                         <img src={Home} alt="Home" />
                     </div>
                 </AppRailAnchor>
-                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
-                    <p>Home</p>
-                    <div class="arrow variant-filled-secondary" />
-                </div>
 					
                 <!-- --- -->
-                <AppRailAnchor href="/progress" class="[&>*]:pointer-events-none">
-                    <div class="icon-container" use:popup={popupHover}>
+                <AppRailAnchor href="/progress" >
+                    <div class="icon-container">
                         <img src={Progress} alt="Progress" />
                     </div>
                 </AppRailAnchor>
-                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
-                    <p>Progress</p>
-                    <div class="arrow variant-filled-secondary" />
-                </div>
-                <AppRailAnchor href="/scale" class="[&>*]:pointer-events-none">
-                    <div class="icon-container" use:popup={popupHover}>
+                <AppRailAnchor href="/scale" >
+                    <div class="icon-container">
                         <img src={Scale} alt="Scale" />
                     </div>
                 </AppRailAnchor>
-                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
-                    <p>Scale</p>
-                    <div class="arrow variant-filled-secondary" />
-                </div>
-                <AppRailAnchor href="/settings" class="[&>*]:pointer-events-none">
-                    <div class="icon-container" use:popup={popupHover}>
+                <AppRailAnchor href="/settings" >
+                    <div class="icon-container">
                         <img src={Settings} alt="Settings" />
                     </div>
                 </AppRailAnchor>
-                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
-                    <p>Settings</p>
-                    <div class="arrow variant-filled-secondary" />
-                </div>
             </svelte:fragment>
         </AppRail>
 	</svelte:fragment>
