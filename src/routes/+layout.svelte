@@ -2,6 +2,8 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
+    import { popup } from '@skeletonlabs/skeleton';
+    import { PopupSettings } from '@skeletonlabs/skeleton';
 
     import Home from '$lib/icons/home.svg';
     import Progress from '$lib/icons/progress.svg';
@@ -9,7 +11,42 @@
     import Settings from '$lib/icons/settings.svg';
 
     let currentTitle: number = 0;
+
+    const popupHover: PopupSettings = {
+    	event: 'hover',
+    	target: 'popupHover',
+    	placement: 'right'
+    };
+				
 </script>
+
+<style>
+    .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .icon-container img {
+        width: 20px;
+        height: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .icon-container img {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .icon-container img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+</style>
 
 <!-- App Shell -->
 <AppShell>
@@ -48,30 +85,45 @@
 		</AppBar>
         <AppRail>
             <svelte:fragment slot="lead">
-                <AppRailAnchor href="/" >
-                    <img src={Home} alt="Home" />
-                    <span>Home</span>
+                <AppRailAnchor href="/" class="[&>*]:pointer-events-none">
+                    <div class="icon-container" use:popup={popupHover}>
+                        <img src={Home} alt="Home" />
+                    </div>
                 </AppRailAnchor>
+                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+                    <p>Home</p>
+                    <div class="arrow variant-filled-secondary" />
+                </div>
+					
+                <!-- --- -->
+                <AppRailAnchor href="/progress" class="[&>*]:pointer-events-none">
+                    <div class="icon-container" use:popup={popupHover}>
+                        <img src={Progress} alt="Progress" />
+                    </div>
+                </AppRailAnchor>
+                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+                    <p>Progress</p>
+                    <div class="arrow variant-filled-secondary" />
+                </div>
+                <AppRailAnchor href="/scale" class="[&>*]:pointer-events-none">
+                    <div class="icon-container" use:popup={popupHover}>
+                        <img src={Scale} alt="Scale" />
+                    </div>
+                </AppRailAnchor>
+                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+                    <p>Scale</p>
+                    <div class="arrow variant-filled-secondary" />
+                </div>
+                <AppRailAnchor href="/settings" class="[&>*]:pointer-events-none">
+                    <div class="icon-container" use:popup={popupHover}>
+                        <img src={Settings} alt="Settings" />
+                    </div>
+                </AppRailAnchor>
+                <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+                    <p>Settings</p>
+                    <div class="arrow variant-filled-secondary" />
+                </div>
             </svelte:fragment>
-            <!-- --- -->
-            <AppRailTile bind:group={currentTitle} name="Progress" value={0} title="Progress">
-                <svelte:fragment slot="lead">
-                    <img src={Progress} alt="Progress" />
-                    <span>Progress</span>
-                </svelte:fragment>
-            </AppRailTile>
-            <AppRailTile bind:group={currentTitle} name="Scale" value={0} title="Scale">
-                <svelte:fragment slot="lead">
-                    <img src={Scale} alt="Scale" />
-                    <span>Scale</span>
-                </svelte:fragment>
-            </AppRailTile>
-            <AppRailTile bind:group={currentTitle} name="Settings" value={0} title="Settings">
-                <svelte:fragment slot="lead">
-                    <img src={Settings} alt="Settings" />
-                    <span>Settings</span>
-                </svelte:fragment>
-            </AppRailTile>
         </AppRail>
 	</svelte:fragment>
 	<!-- Page Route Content -->
