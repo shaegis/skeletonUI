@@ -3,10 +3,10 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 
-    import { Home } from 'lucide-svelte/icons/house';
-    import { NotePen } from 'lucide-svelte/icons/notebook-pen';
-    import { Ruler } from 'lucide-svelte/icons/ruler';
-    import { Settings } from 'lucide-svelte/icons/settings';
+    import Home from '$lib/icons/home.svg';
+    import Progress from '$lib/icons/progress.svg';
+    import Scale from '$lib/icons/scale.svg';
+    import Settings from '$lib/icons/settings.svg';
 
     let currentTitle: number = 0;
 </script>
@@ -49,26 +49,27 @@
         <AppRail>
             <svelte:fragment slot="lead">
                 <AppRailAnchor href="/" >
-                    <Home class="w-6 h-6 text-gray-500" />
+                    <img src={Home} alt="Home" />
+                    <span>Home</span>
                 </AppRailAnchor>
             </svelte:fragment>
             <!-- --- -->
             <AppRailTile bind:group={currentTitle} name="Progress" value={0} title="Progress">
                 <svelte:fragment slot="lead">
-                    <NotePen class="w-6 h-6 text-gray-500" />
+                    <img src={Progress} alt="Progress" />
                     <span>Progress</span>
                 </svelte:fragment>
             </AppRailTile>
             <AppRailTile bind:group={currentTitle} name="Scale" value={0} title="Scale">
                 <svelte:fragment slot="lead">
-                    <Ruler class="w-6 h-6 text-gray-500" />
+                    <img src={Scale} alt="Scale" />
                     <span>Scale</span>
                 </svelte:fragment>
             </AppRailTile>
             <AppRailTile bind:group={currentTitle} name="Settings" value={0} title="Settings">
                 <svelte:fragment slot="lead">
-                    <Settings class="w-6 h-6 text-gray-500" />
-                    <span>Scale</span>
+                    <img src={Settings} alt="Settings" />
+                    <span>Settings</span>
                 </svelte:fragment>
             </AppRailTile>
         </AppRail>
