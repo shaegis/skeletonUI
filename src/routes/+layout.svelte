@@ -3,10 +3,7 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 
-    import Home from '$lib/icons/home.svg';
-    import Progress from '$lib/icons/progress.svg';
-    import Scale from '$lib/icons/scale.svg';
-    import Settings from '$lib/icons/settings.svg';
+    import { Home, Pencil as Progress, Ruler as Scale, Settings } from 'lucide-svelte';
 
 </script>
 
@@ -16,26 +13,22 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        font-size: 1rem; /* 기본 아이콘 크기 설정 */
     }
 
-    .icon-container img {
-        width: 20px;
-        height: 20px;
-    }
-
+    /* 화면 크기에 따라 동적으로 font-size 조정 */
     @media (min-width: 768px) {
-        .icon-container img {
-            width: 32px;
-            height: 32px;
+        .icon-container {
+            font-size: 1.5rem; /* 태블릿 */
         }
     }
 
     @media (min-width: 1024px) {
-        .icon-container img {
-            width: 40px;
-            height: 40px;
+        .icon-container {
+            font-size: 2rem; /* 데스크톱 */
         }
     }
+
 </style>
 
 <!-- App Shell -->
@@ -76,25 +69,25 @@
         <AppRail>
             <svelte:fragment slot="lead">
                 <AppRailAnchor href="/" >
-                    <div class="icon-container">
-                        <img src={Home} alt="Home" />
+                    <div class="icon-container text-secondary">
+                        <Home />
                     </div>
                 </AppRailAnchor>
 					
                 <!-- --- -->
                 <AppRailAnchor href="/progress" >
-                    <div class="icon-container">
-                        <img src={Progress} alt="Progress" />
+                    <div class="icon-container text-secondary">
+                        <Progress />
                     </div>
                 </AppRailAnchor>
                 <AppRailAnchor href="/scale" >
-                    <div class="icon-container">
-                        <img src={Scale} alt="Scale" />
+                    <div class="icon-container text-secondary">
+                        <Scale />
                     </div>
                 </AppRailAnchor>
-                <AppRailAnchor href="/settings" >
-                    <div class="icon-container">
-                        <img src={Settings} alt="Settings" />
+                <AppRailAnchor href="/settings">
+                    <div class="icon-container text-secondary">
+                        <Settings />
                     </div>
                 </AppRailAnchor>
             </svelte:fragment>
