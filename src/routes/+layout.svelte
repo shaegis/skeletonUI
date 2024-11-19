@@ -2,9 +2,17 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
     import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
+    import { Home, Pencil as Progress, Ruler as Scale, Settings, MoveLeft } from 'lucide-svelte';
+    import { page } from '$app/stores';
 
-    import { Home, Pencil as Progress, Ruler as Scale, Settings } from 'lucide-svelte';
+    export let title = 'Cranking - Let\'s Crank Out!';
 
+    let showBackButton = false;
+
+    $: {
+        const currentPath = $page.url.pathname;
+        showBackButton = currentPath !== '/';
+    }
 </script>
 
 <style>
@@ -37,7 +45,14 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Skeleton</strong>
+                {#if showBackButton}
+                    <div class="icon-container text-secondary" on:Click={() => window.history.back()}>
+                        <MoveLeft />
+                    </div>
+                {/if}
+                <span class="ml-4">
+				    <strong class="text-xl uppercase">{title}</strong>
+                </span>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a

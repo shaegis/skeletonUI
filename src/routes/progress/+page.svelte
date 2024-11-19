@@ -1,11 +1,11 @@
-<script>
-    import { AppBar } from '@skeletonlabs/skeleton';
+<script lang='ts'>
+    export let title = 'Progress';
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
     <div class="text-center">
-        <h1 class="h1">Progress Page</h1>
-        <p class="text-lg">This is the Progress page. Add your content here.</p>
+        <h1 class="h1">{title} Page</h1>
+        <p class="text-lg">This is the {title} page. Add your content here.</p>
     </div>
 </div>
 
