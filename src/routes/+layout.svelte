@@ -15,44 +15,27 @@
     }
 </script>
 
-<style>
-    .icon-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        font-size: 1rem; /* 기본 아이콘 크기 설정 */
-    }
-
-    /* 화면 크기에 따라 동적으로 font-size 조정 */
-    @media (min-width: 768px) {
-        .icon-container {
-            font-size: 1.5rem; /* 태블릿 */
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .icon-container {
-            font-size: 2rem; /* 데스크톱 */
-        }
-    }
-
-</style>
-
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-                {#if showBackButton}
-                    <div class="icon-container text-secondary" on:Click={() => window.history.back()}>
-                        <MoveLeft />
-                    </div>
-                {/if}
-                <span class="ml-4">
-				    <strong class="text-xl uppercase">{title}</strong>
-                </span>
+                <div class="flex items-center gap-2">
+                    {#if showBackButton}
+                        <button 
+                            type="button"
+                            class="variant-soft-primary flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 cursor-pointer"
+                            on:click={() => window.history.back()}
+                            on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') window.history.back(); }}
+                            aria-label="Go Back"
+                        >
+                            <!-- MoveLeft 아이콘 -->
+                            <MoveLeft class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
+                        </button>
+                    {/if}
+                    <span class="text-primary font-bold text-lg sm:text-xl uppercase">{title}</span>
+                </div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
@@ -83,27 +66,19 @@
 		</AppBar>
         <AppRail>
             <svelte:fragment slot="lead">
-                <AppRailAnchor href="/" >
-                    <div class="icon-container text-secondary">
-                        <Home />
-                    </div>
+                <AppRailAnchor href="/" class="variant-soft-primary flex items-center justify-center text-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
+                        <Home class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                 </AppRailAnchor>
 					
                 <!-- --- -->
-                <AppRailAnchor href="/progress" >
-                    <div class="icon-container text-secondary">
-                        <Progress />
-                    </div>
+                <AppRailAnchor href="/progress" class="variant-soft-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
+                        <Progress class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                 </AppRailAnchor>
-                <AppRailAnchor href="/scale" >
-                    <div class="icon-container text-secondary">
-                        <Scale />
-                    </div>
+                <AppRailAnchor href="/scale" class="variant-soft-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
+                        <Scale class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                 </AppRailAnchor>
-                <AppRailAnchor href="/settings">
-                    <div class="icon-container text-secondary">
-                        <Settings />
-                    </div>
+                <AppRailAnchor href="/settings" class="variant-soft-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
+                        <Settings class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                 </AppRailAnchor>
             </svelte:fragment>
         </AppRail>
